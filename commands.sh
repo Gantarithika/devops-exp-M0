@@ -1,81 +1,60 @@
 # ==============================================================================
-# EXPERIMENT 2: Important Git and GitHub Commands
+# EXPERIMENT 3: Create a New Repo from Command Line, Create File, and Push
 # ==============================================================================
 
-# 1. Basic Commands
+# Step 1: Create a Project Directory (if not already created) and navigate into it
 # ------------------------------------------------------------------------------
-# Initialize a new local Git repository in the current directory
+# mkdir my-new-project
+# cd my-new-project
+
+# Step 2: Initialize a New Git Repository
+# ------------------------------------------------------------------------------
+# Initialize the current directory as a Git repository
 git init
 
-# Clone an existing remote repository from GitHub to your local machine
-# (Replace <repository-url> with your repository link)
-git clone <repository-url>
+# Step 3: Create a File from the Command Line
+# ------------------------------------------------------------------------------
+# Create a README.md file with initial content using echo
+echo "# My New Project" >> README.md
 
-# Check the status of working directory and staged files
+# (Optional: create another code file)
+# echo "print('Hello, Git!')" > app.py
+
+# Step 4: Check Status and Stage the File
+# ------------------------------------------------------------------------------
+# Verify that the new untracked file is detected
 git status
 
-# Stage all modified and new files for commit
-git add .
+# Add the file to the staging area
+git add README.md
+# Or stage all created files:
+# git add .
 
-# Record staged snapshots to repository history with a descriptive message
-git commit -m "commit message"
-
-# Show full commit history logs with author, date, and commit hashes
-git log
-
-
-# 2. Branch Commands
+# Step 5: Commit the File to Repository History
 # ------------------------------------------------------------------------------
-# List all local branches in the repository (* indicates current active branch)
-git branch
+# Commit the staged file with a descriptive message
+git commit -m "feat: initial commit with README.md"
 
-# Create a new branch with the specified name
-git branch <branch-name>
-
-# Switch to an existing branch
-git switch <branch-name>
-
-# Create a new branch and switch to it immediately
-git switch -c <new-branch>
-
-# Merge changes from the specified branch into the current branch
-git merge <branch-name>
-
-
-# 3. GitHub Remote Commands
+# Step 6: Set the Default Branch to main
 # ------------------------------------------------------------------------------
-# Link the local repository to a remote GitHub repository
-git remote add origin <repository-url>
+# Ensure the primary branch is named 'main'
+git branch -M main
 
-# Push the local 'main' branch to remote origin and set upstream tracking
-git push -u origin main
-
-# Fetch and merge updates from the remote 'main' branch into local repository
-git pull origin main
-
-# Download objects and refs from the remote repository without merging
-git fetch
-
-
-# 4. Undo Changes
+# Step 7: Link Local Repository to Remote GitHub Repository
 # ------------------------------------------------------------------------------
-# Discard uncommitted changes in the working directory for a specific file
-git restore <file-name>
+# Method A (Standard Git): Add the remote repository URL
+# (Replace <username> and <repo-name> with your GitHub details)
+git remote add origin https://github.com/<username>/<repo-name>.git
 
-# Unstage a file from the staging area without discarding changes
-git restore --staged <file-name>
+# Method B (Using GitHub CLI if installed):
+# gh repo create <repo-name> --public --source=. --remote=origin
 
-# Create a new commit that reverses the effects of a previous commit
-git revert <commit-id>
-
-
-# 5. Check Differences
+# Step 8: Push Commands to Remote GitHub Repository
 # ------------------------------------------------------------------------------
-# View unstaged changes between the working directory and staging area
-git diff
-
-# View staged changes that will be included in the next commit
-git diff --staged
-
-# View commit history formatted as compact one-line entries
-git log --oneline
+# Note: As requested, push commands are provided in comments for reference:
+# 
+# Push local 'main' branch to remote origin and set upstream tracking:
+# git push -u origin main
+#
+# Subsequent pushes after upstream is set:
+# git push
